@@ -14,6 +14,7 @@ from zoneinfo import ZoneInfo
 # Environment variables
 CONTROLLER_CONFIG_FILENAME = os.getenv('CONTROLLER_CONFIG_FILENAME')
 CONTROLLER_KNFCLOCK_API_URL = os.getenv('CONTROLLER_KNFCLOCK_API_URL')
+KNFCLOCK_REFRESH_TIME = int(os.getenv('KNFCLOCK_REFRESH_TIME', 30))
 
 
 
@@ -144,7 +145,7 @@ def show_time_v1():
 			pass
 
 
-		time.sleep(15)
+		time.sleep(KNFCLOCK_REFRESH_TIME)
 
 
 
@@ -154,7 +155,5 @@ def show_time_v1():
 
 
 if __name__ == '__main__':
-	while True:
-		show_time_v1()
-		time.sleep(10)
+	show_time_v1()
 

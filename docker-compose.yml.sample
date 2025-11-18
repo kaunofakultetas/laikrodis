@@ -7,6 +7,7 @@ services:
     environment:
       - CONTROLLER_CONFIG_FILENAME=/data/TracerConfig.json
       - CONTROLLER_KNFCLOCK_API_URL=<Controller knfclock url>
+      - KNFCLOCK_REFRESH_TIME=30
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./DATA:/data
@@ -27,6 +28,7 @@ services:
   #   environment:
   #     - CONTROLLER_CONFIG_FILENAME=/data/TracerConfig.json
   #     - CONTROLLER_KNFCLOCK_API_URL=<Controller knfclock url>
+  #     - KNFCLOCK_REFRESH_TIME=30
   #   volumes:
   #     - /etc/localtime:/etc/localtime:ro
   #     - ./DATA:/data
