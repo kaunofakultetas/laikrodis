@@ -1,0 +1,19 @@
+services:
+
+  knfclock-rpi:
+    container_name: knfclock-rpi
+    image: knfclock-rpi
+    user: root
+    build:
+      context: ./knfclock-rpi
+    environment:
+      - CONTROLLER_CONFIG_FILENAME=/data/TracerConfig.json
+      - CONTROLLER_KNFCLOCK_API_URL=<Controller knfclock url>
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./DATA:/data
+    devices:
+      - /dev/gpiomem:/dev/gpiomem
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    restart: unless-stopped
+
