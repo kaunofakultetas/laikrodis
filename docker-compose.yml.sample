@@ -8,9 +8,10 @@ services:
       - CONTROLLER_CONFIG_FILENAME=/data/TracerConfig.json
       - CONTROLLER_KNFCLOCK_API_URL=<Controller knfclock url>
       - KNFCLOCK_REFRESH_TIME=30
+      - KNFCLOCK_BRIDGE_API_KEY=<knfclock-bridge-api-key>
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./DATA:/data
+      - ./_DATA:/data
     devices:
       - /dev/gpiomem:/dev/gpiomem
       - /dev/ttyUSB0:/dev/ttyUSB0
@@ -29,9 +30,10 @@ services:
   #     - CONTROLLER_CONFIG_FILENAME=/data/TracerConfig.json
   #     - CONTROLLER_KNFCLOCK_API_URL=<Controller knfclock url>
   #     - KNFCLOCK_REFRESH_TIME=30
+  #     - KNFCLOCK_BRIDGE_API_KEY=<knfclock-bridge-api-key>
   #   volumes:
   #     - /etc/localtime:/etc/localtime:ro
-  #     - ./DATA:/data
+  #     - ./_DATA:/data
   #   devices:
   #     - /dev/gpiomem:/dev/gpiomem
   #     - /dev/ttyUSB0:/dev/ttyUSB0

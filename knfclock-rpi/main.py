@@ -15,7 +15,7 @@ from zoneinfo import ZoneInfo
 CONTROLLER_CONFIG_FILENAME = os.getenv('CONTROLLER_CONFIG_FILENAME')
 CONTROLLER_KNFCLOCK_API_URL = os.getenv('CONTROLLER_KNFCLOCK_API_URL')
 KNFCLOCK_REFRESH_TIME = int(os.getenv('KNFCLOCK_REFRESH_TIME', 30))
-
+KNFCLOCK_BRIDGE_API_KEY = os.getenv('KNFCLOCK_BRIDGE_API_KEY', '')
 
 
 
@@ -135,7 +135,7 @@ def show_time_v1():
 		# SEND HERE
 		try:
 			print(json.dumps(dataForTracer, indent=4, sort_keys=True)) # Debug
-			responseJson = requests.post(CONTROLLER_KNFCLOCK_API_URL, json=dataForTracer).json()
+			responseJson = requests.post(CONTROLLER_KNFCLOCK_API_URL, json=dataForTracer, headers={'X-API-Key': KNFCLOCK_BRIDGE_API_KEY}).json()
 			with open(CONTROLLER_CONFIG_FILENAME, 'w') as outfile:
 				json.dump(responseJson, outfile)
 
